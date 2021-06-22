@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import edu.hm.mobile_app.geomaps.integrated_maps.MapsActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -58,6 +59,11 @@ class MainActivity : AppCompatActivity() {
             val uri = Uri.parse("https://www.google.com/maps/dir/?api=1&dir_action=navigate&origin=48.1680391,11.7178413&destination=48.1546997,11.5567071&waypoints=48.135,11.581|48.1888204,11.6408373&travelmode=walking")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             intent.setPackage("com.google.android.apps.maps")
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.show_maps_in_fragment_button).setOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
             startActivity(intent)
         }
     }
