@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 
@@ -13,9 +14,10 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.navigation.NavigationView
 import edu.hm.mobile_app.geomaps.R
 
-class MapsFragment : Fragment() {
+class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener {
 
     private val callback = OnMapReadyCallback { googleMap ->
         val munichCentral = LatLng(48.1371349, 11.5754819)
@@ -38,4 +40,11 @@ class MapsFragment : Fragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        println("CLICKED")
+
+        return true
+    }
+
 }

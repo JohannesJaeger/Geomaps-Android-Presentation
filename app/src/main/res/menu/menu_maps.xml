@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="none">
         <item
             android:id="@+id/nav_first_fragment"
             android:icon="@drawable/common_full_open_on_phone"
-            android:title="First" />
-        <item
-            android:id="@+id/nav_second_fragment"
-            android:icon="@drawable/common_google_signin_btn_icon_dark_normal"
-            android:title="Second" />
-        <item
-            android:id="@+id/nav_third_fragment"
-            android:icon="@drawable/common_google_signin_btn_icon_light_normal_background"
-            android:title="Third" />
+            android:title="This is a button to test" />
     </group>
 </menu>
