@@ -18,7 +18,7 @@ class MapsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val mapsFragment = MapsFragment()
-        
+
         findViewById<NavigationView>(R.id.nav_view).setNavigationItemSelectedListener(mapsFragment)
 
         supportFragmentManager.beginTransaction().replace(R.id.maps_frame_layout, mapsFragment).commit()
