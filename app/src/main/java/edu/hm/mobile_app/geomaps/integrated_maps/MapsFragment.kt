@@ -18,9 +18,9 @@ import edu.hm.mobile_app.geomaps.R
 class MapsFragment : Fragment() {
 
     private val callback = OnMapReadyCallback { googleMap ->
-        val sydney = LatLng(-34.0, 151.0)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val munichCentral = LatLng(48.1371349, 11.5754819)
+        googleMap.addMarker(MarkerOptions().position(munichCentral).title("Marker in Sydney"))
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(munichCentral, 18F))
         googleMap.isTrafficEnabled = true
         googleMap.mapType = GoogleMap.MAP_TYPE_HYBRID
     }
