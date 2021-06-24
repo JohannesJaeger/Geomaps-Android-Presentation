@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+  <Document>
+    <Placemark>
+      <name>Berlin</name>
+      <description>This is the city center of berlin</description>
+      <Point>
+        <coordinates>13.383061790843573,52.51246704991921,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Hamburg</name>
+      <description>This is the city center of hamburg</description>
+      <Point>
+        <coordinates>9.993987286645236,53.55070509883354,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Hanover</name>
+      <description>This is the city center of hanover</description>
+      <Point>
+        <coordinates>9.727866150467955, 52.371948774676035,0</coordinates>
+      </Point>
+    </Placemark>
+    <Style id="colorLine">
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>10</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FF0000FF</color>
+      </PolyStyle>
+    </Style>
+    <Placemark>
+      <name>Line through all cities</name>
+      <description>Cities</description>
+      <styleUrl>#colorLine</styleUrl>
+      <LineString>
+        <extrude>1</extrude>
+        <tessellate>1</tessellate>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          13.383061790843573,52.51246704991921,0
+          9.993987286645236,53.55070509883354,0
+          9.727866150467955,52.371948774676035,0
+          13.383061790843573,52.51246704991921,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

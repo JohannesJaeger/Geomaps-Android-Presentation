@@ -14,6 +14,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.android.material.navigation.NavigationView
+import com.google.maps.android.data.kml.KmlLayer
 import edu.hm.mobile_app.geomaps.R
 
 
@@ -27,6 +28,7 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
     private lateinit var centralCircle: Circle
     private lateinit var hmRouteLine: Polyline
     private lateinit var bavariaPolygon: Polygon
+    private lateinit var germanCitiesKml: KmlLayer
 
     private val callback = OnMapReadyCallback { googleMap ->
         this.googleMap = googleMap
@@ -151,6 +153,9 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
             false
         }
 
+        // Load kml file with some german cities
+        germanCitiesKml = KmlLayer(googleMap, R.raw.german_cities, requireContext())
+
         // Move camera to munich central
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(munichCentral, 17F))
     }
@@ -223,6 +228,15 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(49.2458973513043, 11.204244747495697), 6F))
                 }
                 bavariaPolygon.isVisible = !bavariaPolygon.isVisible
+                true
+            }
+            R.id.toolbar_maps_show_german_cities -> {
+                if(!germanCitiesKml.isLayerOnMap) {
+                    germanCitiesKml.addLayerToMap()
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(52.87575271180225, 11.062107259837989), 6.8F))
+                } else {
+                    germanCitiesKml.removeLayerFromMap()
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)

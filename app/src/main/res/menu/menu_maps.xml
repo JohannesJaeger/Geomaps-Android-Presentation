@@ -47,4 +47,8 @@
     <item
         android:id="@+id/toolbar_maps_bavaria_polygon"
         android:title="Show Bavaria Area" />
+
+    <item
+        android:id="@+id/toolbar_maps_show_german_cities"
+        android:title="Show some german cities with Kml" />
 </menu>
