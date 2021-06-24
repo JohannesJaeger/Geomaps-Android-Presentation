@@ -64,7 +64,7 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
             MarkerOptions()
                 .position(munichHm)
                 .title("Hochschule München")
-                .snippet("Lotstraße, R Gebäude")
+                .snippet("Lothstaße, R Building")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.hm_logo))
         ).tag = "This marker is at HM Munich"
 
