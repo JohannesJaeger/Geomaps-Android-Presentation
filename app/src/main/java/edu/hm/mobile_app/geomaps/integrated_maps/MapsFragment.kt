@@ -1,6 +1,8 @@
 package edu.hm.mobile_app.geomaps.integrated_maps
 
 import android.graphics.Color
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -16,6 +18,7 @@ import com.google.android.gms.maps.model.*
 import com.google.android.material.navigation.NavigationView
 import com.google.maps.android.data.kml.KmlLayer
 import edu.hm.mobile_app.geomaps.R
+import java.io.IOException
 
 
 class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener {
@@ -33,6 +36,17 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
     private val callback = OnMapReadyCallback { googleMap ->
         this.googleMap = googleMap
 
+        addMarkers()
+        addCircles()
+        addPolylines()
+        addPolygons()
+        addKmls()
+
+        // Move camera to munich central
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(munichCentral, 17F))
+    }
+
+    private fun addMarkers() {
         // Markers
 
         // Add marker in munich central
@@ -70,7 +84,9 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
             }
             false
         }
+    }
 
+    private fun addCircles() {
         // Circles
 
         // Add circle in munich central with a radius of 2km
@@ -91,7 +107,9 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
             }
             false
         }
+    }
 
+    private fun addPolylines() {
         // Polylines
 
         // Add polyline from central to Hochschule München
@@ -118,7 +136,9 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
             }
             false
         }
+    }
 
+    private fun addPolygons() {
         // Polygon
 
         // Add polygon that marks bavaria
@@ -152,12 +172,11 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
             }
             false
         }
+    }
 
+    private fun addKmls() {
         // Load kml file with some german cities
         germanCitiesKml = KmlLayer(googleMap, R.raw.german_cities, requireContext())
-
-        // Move camera to munich central
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(munichCentral, 17F))
     }
 
     override fun onCreateView(
