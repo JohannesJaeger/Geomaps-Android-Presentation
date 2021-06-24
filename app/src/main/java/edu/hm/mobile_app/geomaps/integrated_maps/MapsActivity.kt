@@ -1,8 +1,6 @@
 package edu.hm.mobile_app.geomaps.integrated_maps
 
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.navigation.NavigationView

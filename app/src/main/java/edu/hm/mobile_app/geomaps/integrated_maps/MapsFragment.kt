@@ -1,8 +1,6 @@
 package edu.hm.mobile_app.geomaps.integrated_maps
 
 import android.graphics.Color
-import android.location.Address
-import android.location.Geocoder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -18,7 +16,6 @@ import com.google.android.gms.maps.model.*
 import com.google.android.material.navigation.NavigationView
 import com.google.maps.android.data.kml.KmlLayer
 import edu.hm.mobile_app.geomaps.R
-import java.io.IOException
 
 
 class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener {

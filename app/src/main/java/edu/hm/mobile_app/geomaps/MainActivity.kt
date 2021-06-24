@@ -7,7 +7,6 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import edu.hm.mobile_app.geomaps.integrated_maps.MapsActivity
 
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
