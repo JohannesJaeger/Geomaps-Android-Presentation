@@ -33,6 +33,7 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
     private val callback = OnMapReadyCallback { googleMap ->
         this.googleMap = googleMap
 
+        // Setup layers in map
         addMarkers()
         addCircles()
         addPolylines()
@@ -41,6 +42,21 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
 
         // Move camera to munich central
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(munichCentral, 17F))
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_maps, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val mapFragment =
+            childFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment?
+        mapFragment?.getMapAsync(callback)
     }
 
     private fun addMarkers() {
@@ -176,21 +192,7 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         germanCitiesKml = KmlLayer(googleMap, R.raw.german_cities, requireContext())
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_maps, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val mapFragment =
-            childFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
-    }
-
+    // Sidebar buttons
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.toolbar_maps_map_type_none -> {
