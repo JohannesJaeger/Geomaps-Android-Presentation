@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Change map type">
         <menu xmlns:android="http://schemas.android.com/apk/res/android">
@@ -51,4 +52,9 @@
     <item
         android:id="@+id/toolbar_maps_show_german_cities"
         android:title="Show some german cities with Kml" />
+
+    <item android:id="@+id/toolbar_maps_search_location"
+        android:title="Search Location"
+        app:showAsAction="collapseActionView|ifRoom"
+        app:actionViewClass="android.widget.SearchView" />
 </menu>

@@ -1,11 +1,13 @@
 package edu.hm.mobile_app.geomaps.integrated_maps
 
 import android.graphics.Color
+import android.location.Geocoder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -254,6 +256,23 @@ class MapsFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(52.87575271180225, 11.062107259837989), 6.8F))
                 } else {
                     germanCitiesKml.removeLayerFromMap()
+                }
+                true
+            }
+            R.id.toolbar_maps_search_location -> {
+                val search = item.actionView as SearchView
+
+                val address = Geocoder(requireContext()).getFromLocationName(search.query.toString(), 1)[0]
+
+                if(address != null) {
+                    googleMap.animateCamera(
+                        CameraUpdateFactory.newLatLngZoom(
+                            LatLng(
+                                address.latitude,
+                                address.longitude
+                            ), 13F
+                        )
+                    )
                 }
                 true
             }
